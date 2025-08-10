@@ -1,0 +1,8 @@
+post_install() {
+    echo "========================================================"
+    echo "spp zsh prompt hook has been installed to /usr/share/spp/spp.zsh"
+    echo ""
+    echo "To use the prompt, add the following line to your .zshrc:"
+    echo "source /usr/share/spp/spp.zsh"
+    echo "========================================================"
+} 
