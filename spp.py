@@ -249,7 +249,7 @@ def render(expr, zsh=False):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Simple Python Prompt")
-    parser.add_argument("--expr", "-e", type=str, default="{status}{? {time}}{? {git}}\n>: ",
+    parser.add_argument("--expr", "-e", type=str, default="{userhost} >: ",
                         help="Prompt expression with tokens (see README)")
     parser.add_argument("--raw", "-r", action="store_true", help="Strip newlines from output")
     parser.add_argument("--zsh", action="store_true", help="Wrap ANSI codes in %%{...%%} for zsh prompt width")
