@@ -1,7 +1,7 @@
 _pkgname=spp
 pkgname=$_pkgname-git
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Simple Python Prompt"
 
 arch=('any')

@@ -3,6 +3,11 @@ post_install() {
     echo "spp zsh prompt hook has been installed to /usr/share/spp/spp.zsh"
     echo ""
     echo "To use the prompt, add the following line to your .zshrc:"
-    echo "source /usr/share/spp/spp.zsh"
+    echo "  source /usr/share/spp/spp.zsh"
+    echo ""
+    echo "To customize the prompt expression, set SPP_EXPR in your .zshrc:"
+    echo "  export SPP_EXPR='...'"
+    echo ""
+    echo "See up-to-date README.md for available tokens."
     echo "========================================================"
-} 
+}
