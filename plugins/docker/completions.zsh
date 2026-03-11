@@ -1,0 +1,12 @@
+compdef _docker dps=docker
+compdef _docker dpsa=docker
+compdef _docker dex=docker
+compdef _docker dlog=docker
+compdef _docker dimg=docker
+compdef _docker drm=docker
+compdef _docker drmi=docker
+compdef _docker dcu='docker compose'
+compdef _docker dcd='docker compose'
+compdef _docker dcr='docker compose'
+compdef _docker dcl='docker compose'
+compdef _docker dcb='docker compose'

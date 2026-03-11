@@ -1,0 +1,10 @@
+compdef _git gs=git-status
+compdef _git gc=git-commit
+compdef _git gco=git-checkout
+compdef _git gd=git-diff
+compdef _git gl=git-log
+compdef _git gp=git-push
+compdef _git gpl=git-pull
+compdef _git ga=git-add
+compdef _git gb=git-branch
+compdef _git gst=git-stash

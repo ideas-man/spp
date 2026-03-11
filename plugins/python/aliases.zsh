@@ -1,0 +1,7 @@
+alias va='source .venv/bin/activate'
+alias vd='deactivate'
+alias vc='python -m venv .venv'
+alias pipi='pip install'
+alias pipu='pip uninstall'
+alias pipr='pip install -r requirements.txt'
+alias pipf='pip freeze'
