@@ -8,6 +8,9 @@ post_install() {
     echo "To customize the prompt expression, set SPP_EXPR in your .zshrc:"
     echo "  export SPP_EXPR='...'"
     echo ""
-    echo "See up-to-date README.md for available tokens."
+    echo "To enable plugins (e.g. git), set SPP_PLUGINS in your .zshrc:"
+    echo "  export SPP_PLUGINS='git'"
+    echo ""
+    echo "See up-to-date README.md for available tokens and plugins."
     echo "========================================================"
 }

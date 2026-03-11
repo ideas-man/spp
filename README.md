@@ -13,32 +13,62 @@ and follow the post-isntall instuctions.
 
 ## Configuration
 
-Set `SPP_EXPR` in your `.zshrc` to customize the prompt:
+Set `SPP_PLUGINS` and `SPP_EXPR` in your `.zshrc` to customize the prompt:
 
 ```sh
+export SPP_PLUGINS='shell fs host format git'
 export SPP_EXPR='{?time {status} {time}{nl}}{cyan}{userhost}{reset} {blue}{scwd:3}{reset}{? {yellow} {git}{reset}}{nl}{bold}>{reset} '
 ```
 
+## Plugins
+
+spp supports an oh-my-zsh-style plugin system. Plugins can provide tokens, shell aliases, and zsh completions.
+
+Tokens should answer "what will my next command target?" - not "what is the state of the world?" They are navigational context (which branch, which venv, which docker context), not dashboards. Keep them fast, safe to fail, and composable through conditionals.
+
+### Activation
+
+Set `SPP_PLUGINS` in your `.zshrc` (space-separated list):
+
+```sh
+export SPP_PLUGINS='shell fs host format git'
+```
+
+No plugins are loaded by default. If `SPP_PLUGINS` is unset, spp renders a bare `>: ` prompt.
+
+### Plugin structure
+
+```
+plugins/<name>/
+├── tokens.py        # def register(tokens): ...
+├── aliases.zsh      # shell aliases
+└── completions.zsh  # zsh compdef entries
+```
+
+All three files are optional. `tokens.py` is loaded at render time by `spp.py`; `aliases.zsh` and `completions.zsh` are sourced at shell startup by `spp.zsh`.
+
+### Discovery
+
+Plugin directories are searched in order (first match wins):
+
+1. `/usr/share/spp/plugins/` (system - shipped with package)
+2. `~/.config/spp/plugins/` (user)
+3. `<spp-script-dir>/plugins/` (development)
+
+### Writing a plugin
+
+Create a directory under `~/.config/spp/plugins/<name>/` with a `tokens.py`:
+
+```python
+def register(tokens):
+    tokens["mytoken"] = lambda: "hello"
+```
+
+Then add `<name>` to `SPP_PLUGINS`.
+
 ## Tokens
 
-| Token | Description | Example output |
-|---|---|---|
-| `{status}` | Exit code number | `0`, `1`, `130` |
-| `{exit}` | Exit code name | `SUCCESS`, `SIGSEGV` |
-| `{time}` | Elapsed time (human-readable) | `3s`, `2m10s`, `1h5m` |
-| `{timer}` | Elapsed time (precise) | `[3.21]` |
-| `{git}` | Branch, ahead/behind, dirty state | `main ↑1 ~2 ?1` |
-| `{cwd}` | Full working directory | `/home/user/projects/foo` |
-| `{hcwd}` | Working directory with `~` | `~/projects/foo` |
-| `{scwd}` | Shortened cwd | `~/projects/foo` |
-| `{scwd:N}` | Last N path components | `foo` (N=1) |
-| `{user}` | Username | `user` |
-| `{host}` | Hostname | `host` |
-| `{userhost}` | user@host | `user@host` |
-| `{eperm}` | Effective permissions on cwd | `rwx` or `r-x` |
-| `{operm}` | Octal mode of cwd | `755` |
-| `{sep}` | Full-width separator line | `────────...` |
-| `{nl}` | Literal newline | |
+Tokens are provided by plugins - see each plugin's README for available tokens and examples.
 
 ### Colors
 
