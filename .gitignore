@@ -1,3 +1,8 @@
 /pkg
 /src
 *.pkg.tar.zst
+
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
