@@ -17,6 +17,7 @@ package() {
     install -Dm 644 spp.zsh "$pkgdir/usr/share/spp/spp.zsh"
 
     # Plugins
+    cd "$startdir"
     for f in plugins/*/*; do
         install -Dm 644 "$f" "$pkgdir/usr/share/spp/$f"
     done
